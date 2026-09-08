@@ -1,0 +1,9 @@
+ope---
+title: "MDS quarto demo"
+---
+
+This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+Hi! I am practicing changing my site and updating it.
