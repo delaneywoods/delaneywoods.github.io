@@ -5,5 +5,4 @@ date: 2026-09-13
 ---
 
 
-![During our first week at orientation, I didn't take many photos, but I did still work at 
-my part-time job of puppy yoga.](images/puppy_yoga_photo.jpg)
+![During our first week at orientation, I didn't take many photos, but I did still work at my part-time job of puppy yoga.](puppy_yoga_photo.jpg){width=250px} 
