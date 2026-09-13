@@ -1,6 +1,13 @@
 ope---
-title: "MDS quarto demo"
+title: "Delaney Woods"
 ---
+![](images/profile.jpg){width=250px} 
+
+My name is Delaney Woods, and I grew up in Victoria located on Vancouver Island. 
+I studied in the BMS program at UBC prior to commencing the MDS program 
+and I am hoping to learn a great deal about data structures and appropriate data practices 
+to eventually work in the data ethics field! (Maybe in healthcare, maybe in sports science, who knows!:)
+
 
 This is a Quarto website.
 

@@ -1,8 +1,9 @@
 project:
   type: website
+  output-dir: docs
 
 website:
-  title: "MDS quarto demo"
+  title: "Delaney Woods"
   navbar:
     left:
       - href: index.qmd
