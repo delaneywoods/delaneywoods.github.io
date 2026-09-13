@@ -1,7 +1,7 @@
-ope---
+---
 title: "Delaney Woods"
 ---
-![](images/profile.jpg){width=250px} 
+![](images/photo_for_website.jpg){width=250px} 
 
 My name is Delaney Woods, and I grew up in Victoria located on Vancouver Island. 
 I studied in the BMS program at UBC prior to commencing the MDS program 
