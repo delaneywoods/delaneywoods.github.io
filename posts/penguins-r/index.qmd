@@ -1,0 +1,60 @@
+---
+title: "Analyzing Palmer Penguins with R"
+author: "Delaney Woods"
+date: "2026-09-22"
+---
+
+## Introduction
+
+In this post, I use R to explore the Palmer Penguins dataset. I look at body mass across penguin species and examine the relationship between flipper length and body mass.
+
+The data comes from the [Palmer Penguins project](https://allisonhorst.github.io/palmerpenguins/), which uses data from the Palmer Station Antarctica LTER.
+
+## Loading the data
+
+```{r}
+#| message: false
+#| warning: false
+
+library(palmerpenguins)
+
+penguins <- palmerpenguins::penguins
+
+head(penguins)
+```
+## Body mass by species
+
+I calculated the average body mass for each penguin species to compare their typical body sizes.
+
+```{r}
+avg_species_mass <- aggregate(body_mass_g ~ species, data = penguins, FUN = mean, na.rm = TRUE)
+
+avg_species_mass
+```
+
+## Flipper length and body mass
+
+This figure shows the relationship between flipper length and body mass for the three penguin species.
+
+```{r}
+#| label: fig-flipper-mass-r
+#| fig-cap: "Flipper length and body mass of Palmer Penguins, by species."
+
+
+library(ggplot2)
+
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g, color = species, shape = species)) +
+geom_point() +
+scale_color_manual(values = c(
+"Adelie" = "#A8DADC",
+"Chinstrap" = "#F4A6A6",
+"Gentoo" = "#CDB4DB"
+)) +
+labs(
+x = "Flipper length (mm)",
+y = "Body mass (g)",
+color = "Species",
+shape = "Species"
+)
+```
+
