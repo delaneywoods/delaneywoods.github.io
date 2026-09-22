@@ -1,0 +1,66 @@
+---
+title: "Analyzing Palmer Penguins Data"
+author: "Delaney Woods"
+date: "2026-09-22"
+format:
+  html:
+    code-fold: false
+jupyter: python3
+---
+## Introduction
+
+In this post, I explore and analyze the Palmer Penguins dataset. I try to look at the relationship between penguin flipper length and body mass and compare the measurements across penguin species.
+
+### Data source
+
+The data comes from the Palmer Station Antarctica LTER and is distributed through the Palmer Penguins project.
+
+Data: [Palmer Penguins](https://allisonhorst.github.io/palmerpenguins/).
+
+```{python}
+import pandas as pd
+from palmerpenguins import load_penguins
+
+penguins = load_penguins()
+
+penguins.head()
+```
+
+# Body Mass by species
+In this section of analysis, I found the average weight of each penguin species. The output produces a table of only three numbers, allowing for ease of use.
+
+```{python}
+
+avg_mass_by_species = penguins.groupby("species", as_index=False).agg(average_body_mass_g=("body_mass_g", "mean")).sort_values(by="average_body_mass_g", ascending=False)
+avg_mass_by_species
+```
+## Flipper length and body mass
+
+The following graph demonstrates the relationship between flipper lengths and body mass. The different colours and shapes depict the different species.
+
+```{python}
+#| label: fig-flipper-mass
+#| fig-cap: "Flipper length and body mass of Palmer Penguins, by species."
+
+import matplotlib.pyplot as plt
+adelie = penguins[penguins["species"] == "Adelie"]
+chinstrap = penguins[penguins["species"] == "Chinstrap"]
+gentoo = penguins[penguins["species"] == "Gentoo"]
+
+plt.scatter(adelie["flipper_length_mm"], adelie["body_mass_g"],
+color="#A8DADC", marker="o", label="Adelie")
+
+plt.scatter(chinstrap["flipper_length_mm"], chinstrap["body_mass_g"],
+color="#F4A6A6", marker="s", label="Chinstrap")
+
+plt.scatter(gentoo["flipper_length_mm"], gentoo["body_mass_g"],
+color="#CDB4DB", marker="^", label="Gentoo")
+
+plt.xlabel("Flipper length (mm)")
+plt.ylabel("Body mass (g)")
+plt.legend()
+plt.show()
+
+```
+## Findings
+Based on the graph, it is clear that flipper length tends to increase as body mass increases. In particular, Gentoo are the largest penguin species and have both the heaviest body mass and the longest flipper length.

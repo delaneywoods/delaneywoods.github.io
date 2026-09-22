@@ -1,17 +1,38 @@
 [
   {
-    "objectID": "posts/first-weeks/index.html",
-    "href": "posts/first-weeks/index.html",
-    "title": "My first weeks in MDS",
+    "objectID": "posts/penguins-python/index.html",
+    "href": "posts/penguins-python/index.html",
+    "title": "Analyzing Palmer Penguins Data",
     "section": "",
-    "text": "During our first week at orientation, I didn’t take many photos, but I did still work at my part-time job of puppy yoga.\n\n\nMy first few weeks of the MDS program have been a whirlwind to say the least! Orientation was a wealth of information on how to best tackle the program, where to find resources available to us, and a wonderful way to meet the people in my cohort.\nOn top of the beginning of MDS, I began my first ever TA position. So far, I am loving it, and I don’t want to jinx it but the balance between MDS work and grading has been good! It is nice to have another task to focus on.\nI have found the process of learning git and how to submit assignments to be challenging, but very interesting. At this point, I think DSCI 551 will be the most challenging course for myself in block one, but we have quiz week next week so time will tell!"
+    "text": "In this post, I explore and analyze the Palmer Penguins dataset. I try to look at the relationship between penguin flipper length and body mass and compare the measurements across penguin species.\n\n\nThe data comes from the Palmer Station Antarctica LTER and is distributed through the Palmer Penguins project.\nData: Palmer Penguins.\n\nimport pandas as pd\nfrom palmerpenguins import load_penguins\n\npenguins = load_penguins()\n\npenguins.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nmale\n2007\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nfemale\n2007\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n2007\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nfemale\n2007"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
+    "objectID": "posts/penguins-python/index.html#introduction",
+    "href": "posts/penguins-python/index.html#introduction",
+    "title": "Analyzing Palmer Penguins Data",
     "section": "",
-    "text": "My first weeks in MDS\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nDelaney Woods\n\n\n\n\n\nNo matching items"
+    "text": "In this post, I explore and analyze the Palmer Penguins dataset. I try to look at the relationship between penguin flipper length and body mass and compare the measurements across penguin species.\n\n\nThe data comes from the Palmer Station Antarctica LTER and is distributed through the Palmer Penguins project.\nData: Palmer Penguins.\n\nimport pandas as pd\nfrom palmerpenguins import load_penguins\n\npenguins = load_penguins()\n\npenguins.head()\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\n0\nAdelie\nTorgersen\n39.1\n18.7\n181.0\n3750.0\nmale\n2007\n\n\n1\nAdelie\nTorgersen\n39.5\n17.4\n186.0\n3800.0\nfemale\n2007\n\n\n2\nAdelie\nTorgersen\n40.3\n18.0\n195.0\n3250.0\nfemale\n2007\n\n\n3\nAdelie\nTorgersen\nNaN\nNaN\nNaN\nNaN\nNaN\n2007\n\n\n4\nAdelie\nTorgersen\n36.7\n19.3\n193.0\n3450.0\nfemale\n2007"
+  },
+  {
+    "objectID": "posts/penguins-python/index.html#flipper-length-and-body-mass",
+    "href": "posts/penguins-python/index.html#flipper-length-and-body-mass",
+    "title": "Analyzing Palmer Penguins Data",
+    "section": "Flipper length and body mass",
+    "text": "Flipper length and body mass\nThe following graph demonstrates the relationship between flipper lengths and body mass. The different colours and shapes depict the different species.\n\nimport matplotlib.pyplot as plt\nadelie = penguins[penguins[\"species\"] == \"Adelie\"]\nchinstrap = penguins[penguins[\"species\"] == \"Chinstrap\"]\ngentoo = penguins[penguins[\"species\"] == \"Gentoo\"]\n\nplt.scatter(adelie[\"flipper_length_mm\"], adelie[\"body_mass_g\"],\ncolor=\"#A8DADC\", marker=\"o\", label=\"Adelie\")\n\nplt.scatter(chinstrap[\"flipper_length_mm\"], chinstrap[\"body_mass_g\"],\ncolor=\"#F4A6A6\", marker=\"s\", label=\"Chinstrap\")\n\nplt.scatter(gentoo[\"flipper_length_mm\"], gentoo[\"body_mass_g\"],\ncolor=\"#CDB4DB\", marker=\"^\", label=\"Gentoo\")\n\nplt.xlabel(\"Flipper length (mm)\")\nplt.ylabel(\"Body mass (g)\")\nplt.legend()\nplt.show()\n\n\n\n\n\n\n\nFigure 1: Flipper length and body mass of Palmer Penguins, by species."
+  },
+  {
+    "objectID": "posts/penguins-python/index.html#findings",
+    "href": "posts/penguins-python/index.html#findings",
+    "title": "Analyzing Palmer Penguins Data",
+    "section": "Findings",
+    "text": "Findings\nBased on the graph, it is clear that flipper length tends to increase as body mass increases. In particular, Gentoo are the largest penguin species and have both the heaviest body mass and the longest flipper length."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Delaney Woods",
+    "section": "",
+    "text": "My name is Delaney Woods, and I grew up in Victoria located on Vancouver Island. I studied in the BMS program at UBC prior to commencing the MDS program and I am hoping to learn a great deal about data structures and appropriate data practices to eventually work in the data ethics field! (Maybe in healthcare, maybe in sports science, who knows!:)\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nHi! I am practicing changing my site and updating it."
   },
   {
     "objectID": "about.html",
@@ -21,10 +42,17 @@
     "text": "I was drawn to data science after completing a handful of data and informatics courses during my undergrad. In particular, my INFO 419 (I believe) course was very inspiring. We learned all about information processing and ethics, and I found myself wanting to learn more and more about data practices. Outside of school, I am an avid reader and rugby player! Beyond that, I found myself lacking enough time to pursue my other hobbies such as drawing and painting. I do hope to pick these back up once I finish this degree:)"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Delaney Woods",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
     "section": "",
-    "text": "My name is Delaney Woods, and I grew up in Victoria located on Vancouver Island. I studied in the BMS program at UBC prior to commencing the MDS program and I am hoping to learn a great deal about data structures and appropriate data practices to eventually work in the data ethics field! (Maybe in healthcare, maybe in sports science, who knows!:)\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nHi! I am practicing changing my site and updating it."
+    "text": "Analyzing Palmer Penguins Data\n\n\n\n\n\n\n\n\nSep 22, 2026\n\n\nDelaney Woods\n\n\n\n\n\n\n\n\n\n\n\n\nMy first weeks in MDS\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nDelaney Woods\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/first-weeks/index.html",
+    "href": "posts/first-weeks/index.html",
+    "title": "My first weeks in MDS",
+    "section": "",
+    "text": "During our first week at orientation, I didn’t take many photos, but I did still work at my part-time job of puppy yoga.\n\n\nMy first few weeks of the MDS program have been a whirlwind to say the least! Orientation was a wealth of information on how to best tackle the program, where to find resources available to us, and a wonderful way to meet the people in my cohort.\nOn top of the beginning of MDS, I began my first ever TA position. So far, I am loving it, and I don’t want to jinx it but the balance between MDS work and grading has been good! It is nice to have another task to focus on.\nI have found the process of learning git and how to submit assignments to be challenging, but very interesting. At this point, I think DSCI 551 will be the most challenging course for myself in block one, but we have quiz week next week so time will tell!"
   }
 ]
