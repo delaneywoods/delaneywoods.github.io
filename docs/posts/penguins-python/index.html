@@ -9,7 +9,7 @@
 <meta name="author" content="Delaney Woods">
 <meta name="dcterms.date" content="2026-09-22">
 
-<title>Analyzing Palmer Penguins Data – Delaney Woods</title>
+<title>Analyzing Palmer Penguins Data Using Python – Delaney Woods</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -167,7 +167,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">Data source</a></li>
   </ul></li>
-  <li><a href="#body-mass-by-species" id="toc-body-mass-by-species" class="nav-link" data-scroll-target="#body-mass-by-species">Body Mass by species</a>
+  <li><a href="#body-mass-by-species" id="toc-body-mass-by-species" class="nav-link" data-scroll-target="#body-mass-by-species">Body Mass by species</a></li>
+  <li><a href="#summary-statistics-for-the-variables-shown-in-the-figure" id="toc-summary-statistics-for-the-variables-shown-in-the-figure" class="nav-link" data-scroll-target="#summary-statistics-for-the-variables-shown-in-the-figure">Summary statistics for the variables shown in the figure</a>
   <ul class="collapse">
   <li><a href="#flipper-length-and-body-mass" id="toc-flipper-length-and-body-mass" class="nav-link" data-scroll-target="#flipper-length-and-body-mass">Flipper length and body mass</a></li>
   <li><a href="#findings" id="toc-findings" class="nav-link" data-scroll-target="#findings">Findings</a></li>
@@ -180,7 +181,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Analyzing Palmer Penguins Data</h1>
+<h1 class="title">Analyzing Palmer Penguins Data Using Python</h1>
 </div>
 
 
@@ -216,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="data-source">Data source</h3>
 <p>The data comes from the Palmer Station Antarctica LTER and is distributed through the Palmer Penguins project.</p>
 <p>Data: <a href="https://allisonhorst.github.io/palmerpenguins/">Palmer Penguins</a>.</p>
-<div id="d3c04635" class="cell" data-execution_count="1">
+<div id="3b7253b8" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -308,8 +309,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="body-mass-by-species" class="level1">
 <h1>Body Mass by species</h1>
 <p>In this section of analysis, I found the average weight of each penguin species. The output produces a table of only three numbers, allowing for ease of use.</p>
-<div id="361557ec" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>avg_mass_by_species <span class="op">=</span> penguins.groupby(<span class="st">"species"</span>, as_index<span class="op">=</span><span class="va">False</span>).agg(average_body_mass_g<span class="op">=</span>(<span class="st">"body_mass_g"</span>, <span class="st">"mean"</span>)).sort_values(by<span class="op">=</span><span class="st">"average_body_mass_g"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<div id="a0aec505" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>avg_mass_by_species <span class="op">=</span> penguins.groupby(<span class="st">"species"</span>, as_index<span class="op">=</span><span class="va">False</span>).agg(average_body_mass_g<span class="op">=</span>(<span class="st">"body_mass_g"</span>, <span class="st">"mean"</span>)).sort_values(by<span class="op">=</span><span class="st">"average_body_mass_g"</span>, ascending<span class="op">=</span><span class="va">False</span>).<span class="bu">round</span>(<span class="dv">1</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>avg_mass_by_species</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -327,17 +328,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <th data-quarto-table-cell-role="th">2</th>
 <td>Gentoo</td>
-<td>5076.016260</td>
+<td>5076.0</td>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th">1</th>
 <td>Chinstrap</td>
-<td>3733.088235</td>
+<td>3733.1</td>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">0</th>
 <td>Adelie</td>
-<td>3700.662252</td>
+<td>3700.7</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="summary-statistics-for-the-variables-shown-in-the-figure" class="level1">
+<h1>Summary statistics for the variables shown in the figure</h1>
+<div id="b3ffadea" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>species_summary <span class="op">=</span> (</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    penguins</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    .groupby(<span class="st">"species"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    .agg(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        n<span class="op">=</span>(<span class="st">"species"</span>, <span class="st">"size"</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        average_flipper_length_mm<span class="op">=</span>(<span class="st">"flipper_length_mm"</span>, <span class="st">"mean"</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        average_body_mass_g<span class="op">=</span>(<span class="st">"body_mass_g"</span>, <span class="st">"mean"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">round</span>(<span class="dv">1</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    .reset_index()</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>species_summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">species</th>
+<th data-quarto-table-cell-role="th">n</th>
+<th data-quarto-table-cell-role="th">average_flipper_length_mm</th>
+<th data-quarto-table-cell-role="th">average_body_mass_g</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Adelie</td>
+<td>152</td>
+<td>190.0</td>
+<td>3700.7</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Chinstrap</td>
+<td>68</td>
+<td>195.8</td>
+<td>3733.1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Gentoo</td>
+<td>124</td>
+<td>217.2</td>
+<td>5076.0</td>
 </tr>
 </tbody>
 </table>
@@ -348,25 +408,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="flipper-length-and-body-mass" class="level2">
 <h2 class="anchored" data-anchor-id="flipper-length-and-body-mass">Flipper length and body mass</h2>
 <p>The following graph demonstrates the relationship between flipper lengths and body mass. The different colours and shapes depict the different species.</p>
-<div id="cell-fig-flipper-mass" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>adelie <span class="op">=</span> penguins[penguins[<span class="st">"species"</span>] <span class="op">==</span> <span class="st">"Adelie"</span>]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>chinstrap <span class="op">=</span> penguins[penguins[<span class="st">"species"</span>] <span class="op">==</span> <span class="st">"Chinstrap"</span>]</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>gentoo <span class="op">=</span> penguins[penguins[<span class="st">"species"</span>] <span class="op">==</span> <span class="st">"Gentoo"</span>]</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(adelie[<span class="st">"flipper_length_mm"</span>], adelie[<span class="st">"body_mass_g"</span>],</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">"#A8DADC"</span>, marker<span class="op">=</span><span class="st">"o"</span>, label<span class="op">=</span><span class="st">"Adelie"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.scatter(chinstrap[<span class="st">"flipper_length_mm"</span>], chinstrap[<span class="st">"body_mass_g"</span>],</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">"#F4A6A6"</span>, marker<span class="op">=</span><span class="st">"s"</span>, label<span class="op">=</span><span class="st">"Chinstrap"</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.scatter(gentoo[<span class="st">"flipper_length_mm"</span>], gentoo[<span class="st">"body_mass_g"</span>],</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">"#CDB4DB"</span>, marker<span class="op">=</span><span class="st">"^"</span>, label<span class="op">=</span><span class="st">"Gentoo"</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Flipper length (mm)"</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Body mass (g)"</span>)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="cell-fig-flipper-mass" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>adelie <span class="op">=</span> penguins[penguins[<span class="st">"species"</span>] <span class="op">==</span> <span class="st">"Adelie"</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>chinstrap <span class="op">=</span> penguins[penguins[<span class="st">"species"</span>] <span class="op">==</span> <span class="st">"Chinstrap"</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>gentoo <span class="op">=</span> penguins[penguins[<span class="st">"species"</span>] <span class="op">==</span> <span class="st">"Gentoo"</span>]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(adelie[<span class="st">"flipper_length_mm"</span>], adelie[<span class="st">"body_mass_g"</span>],</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">"#A8DADC"</span>, marker<span class="op">=</span><span class="st">"o"</span>, label<span class="op">=</span><span class="st">"Adelie"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.scatter(chinstrap[<span class="st">"flipper_length_mm"</span>], chinstrap[<span class="st">"body_mass_g"</span>],</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">"#F4A6A6"</span>, marker<span class="op">=</span><span class="st">"s"</span>, label<span class="op">=</span><span class="st">"Chinstrap"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.scatter(gentoo[<span class="st">"flipper_length_mm"</span>], gentoo[<span class="st">"body_mass_g"</span>],</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>color<span class="op">=</span><span class="st">"#CDB4DB"</span>, marker<span class="op">=</span><span class="st">"^"</span>, label<span class="op">=</span><span class="st">"Gentoo"</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Flipper length (mm)"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Body mass (g)"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div id="fig-flipper-mass" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">

@@ -1,5 +1,5 @@
 ---
-title: "Analyzing Palmer Penguins with R"
+title: "Analyzing Palmer Penguins Using R"
 author: "Delaney Woods"
 date: "2026-09-22"
 ---
@@ -30,6 +30,22 @@ I calculated the average body mass for each penguin species to compare their typ
 avg_species_mass <- aggregate(body_mass_g ~ species, data = penguins, FUN = mean, na.rm = TRUE)
 
 avg_species_mass
+
+```
+
+## Summary statistics
+
+```{r}
+
+summary_by_species <- aggregate(
+  cbind(flipper_length_mm, body_mass_g) ~ species,
+  data = penguins,
+  FUN = mean,
+  na.rm = TRUE
+)
+
+summary_by_species
+
 ```
 
 ## Flipper length and body mass
@@ -58,3 +74,5 @@ shape = "Species"
 )
 ```
 
+## Findings
+Based on the graph, it is clear that flipper length tends to increase as body mass increases. In particular, Gentoo are the largest penguin species and have both the heaviest body mass and the longest flipper length.

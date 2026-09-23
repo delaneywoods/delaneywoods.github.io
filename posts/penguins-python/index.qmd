@@ -1,5 +1,5 @@
 ---
-title: "Analyzing Palmer Penguins Data"
+title: "Analyzing Palmer Penguins Data Using Python"
 author: "Delaney Woods"
 date: "2026-09-22"
 format:
@@ -31,9 +31,29 @@ In this section of analysis, I found the average weight of each penguin species.
 
 ```{python}
 
-avg_mass_by_species = penguins.groupby("species", as_index=False).agg(average_body_mass_g=("body_mass_g", "mean")).sort_values(by="average_body_mass_g", ascending=False)
+avg_mass_by_species = penguins.groupby("species", as_index=False).agg(average_body_mass_g=("body_mass_g", "mean")).sort_values(by="average_body_mass_g", ascending=False).round(1)
 avg_mass_by_species
 ```
+
+
+# Summary statistics for the variables shown in the figure
+
+```{python}
+species_summary = (
+    penguins
+    .groupby("species")
+    .agg(
+        n=("species", "size"),
+        average_flipper_length_mm=("flipper_length_mm", "mean"),
+        average_body_mass_g=("body_mass_g", "mean")
+    )
+    .round(1)
+    .reset_index()
+)
+
+species_summary
+``` 
+
 ## Flipper length and body mass
 
 The following graph demonstrates the relationship between flipper lengths and body mass. The different colours and shapes depict the different species.
